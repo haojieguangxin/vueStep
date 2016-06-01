@@ -3,10 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <title>computed</title>
+    <link rel="stylesheet" href="../public/css/demo6.css">
 </head>
 <body>
     <div id="app">
+        <div class="ranges clearfix">
+            <div class="input">
+                <div class="set-hd clearfix">
+                    <span>购买数量</span>
+                    <span>产品单价</span>
+                </div>
+                <ul>
+                    <li v-for="range in ranges" class="clearfix">
+                        <input type="text" class="txt" v-model="range.number">
+                        <input type="text" class="txt" v-model="range.price">
+                    </li>
+                </ul>
+                <div class="add-price-btn">
+                    <span @click="addRange">增加价格区间</span>
+                </div>
+            </div>
+            <div class="preview">
+                <ul>
+                    <li class="prev-tit clearfix">
+                        <strong>购买数量</strong>
+                        <strong>产品单价</strong>
+                    </li>
+                    <li v-for="rangeTxt in rangeTxts" class="prev-cont clearfix">
+                        <span v-text="rangeTxt.number"></span>
+                        <span v-text="rangeTxt.price"></span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
 
     </div>
+    <script src="../public/js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                ranges: [{
+                }]
+            },
+            computed: {
+                rangeTxts: function() {
+                    var ranges = this.ranges, tempRanges = [], rangeTxts = [], i = 0;
+                    for (i = 0; i < ranges.length; i++) {
+                        var range = ranges[i];
+                        if (range.number && range.price) {
+                            tempRanges.push(range);
+                        }
+                    }
+                    var tempLen = tempRanges.length;
+                    for (i = 0; i < tempLen; i++) {
+                        var tempRange = tempRanges[i];
+                        var number = '≥' + tempRange.number;
+                        if (i + 1 < tempLen) {
+                            if (tempRange.number == tempRanges[i+1].number - 1) {
+                                number = tempRange.number;
+                            }
+                            else {
+                                number = tempRange.number + '-' + (tempRanges[i+1].number - 1);
+                            }
+                        }
+                        rangeTxts.push({
+                            number: number,
+                            price: '￥' + tempRange.price
+                        });
+                    }
+                    return rangeTxts;
+                }
+            },
+            methods: {
+                addRange: function() {
+                    this.ranges.push({});
+                }
+            }
+        });
+    </script>
 </body>
 </html>
