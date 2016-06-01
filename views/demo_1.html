@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello world</title>
+</head>
+<style>
+    [v-cloak] {
+        display: none;
+    }
+</style>
+<body>
+    <!--<div id="app">-->
+        <!--{{ message }}-->
+    <!--</div>-->
+    <div id="app" v-cloak>
+        {{ message }}
+    </div>
+    <!--<div id="app" v-html="message"></div>-->
+    <!--<div id="app" v-text="message"></div>-->
+
+    <script src="../public/js/vue.js"></script>
+    <script>
+        // 官网中的例子
+        var vueObj = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello world!<strong>aaaa</strong>'
+            }
+        });
+        // el可以接受的值 String | HTMLElement | Function
+        // el替换成.app或者div可以感受变化，其实String,HTMLElement都是字符串
+
+
+        // 下面我们来改变message的值
+        // vueObj.data.message = 'oh my god!'; // 此处报错
+        //vueObj.$data.message = 'oh my god!';
+
+        // vueObj.$mount('#app');
+    </script>
+</body>
+</html>

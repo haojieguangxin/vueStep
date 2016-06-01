@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab切换</title>
+    <link rel="stylesheet" href="../public/css/demo2.css">
+</head>
+<body>
+
+    <div id="app">
+        <ul class="tab">
+            <li v-for="info in infos" :class="{'selected': cur==$index}" @click="changeTab($index)">{{info.name}}</li>
+        </ul>
+        <div class="tab-cont">
+            <div v-for="info in infos" v-show="cur==$index">{{info.content}}</div>
+        </div>
+    </div>
+
+
+    <script src="../public/js/vue.js"></script>
+    <script>
+        var vueObj = new Vue({
+            el: '#app',
+            data: {
+                infos: [
+                    {
+                        name: 'tab1',
+                        content: '内容1'
+                    },
+                    {
+                        name: 'tab2',
+                        content: '内容2'
+                    },
+                    {
+                        name: 'tab3',
+                        content: '内容3'
+                    }
+                ],
+                cur: 0
+            },
+            methods: {
+                changeTab: function (index) {
+                    this.cur = index;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

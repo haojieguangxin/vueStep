@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab切换</title>
+    <link rel="stylesheet" href="../public/css/demo2.css">
+</head>
+<body>
+    <div id="app">
+        <ul class="tab">
+            <li :class="{'selected': cur==1}" @click="changeTab(1)">tab1</li>
+            <li :class="{'selected': cur==2}" @click="changeTab(2)">tab2</li>
+            <li :class="{'selected': cur==3}" @click="changeTab(3)">tab3</li>
+        </ul>
+        <div class="tab-cont">
+            <div v-show="cur==1">内容1</div>
+            <div v-show="cur==2">内容2</div>
+            <div v-show="cur==3">内容3</div>
+        </div>
+    </div>
+
+    <script src="../public/js/vue.js"></script>
+    <script>
+        var vueObj = new Vue({
+            el: '#app',
+            data: {
+                cur: 1
+            },
+            methods: {
+                changeTab: function(index) {
+                    this.cur = index;
+                }
+            }
+        });
+
+
+    </script>
+</body>
+</html>

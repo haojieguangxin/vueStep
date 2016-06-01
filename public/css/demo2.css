@@ -1,0 +1,44 @@
+@import "reset.css";
+
+#app {
+    padding: 20px;
+}
+
+/** tab related */
+.tab {
+    margin-top: 10px;
+}
+
+.tab:after {
+    content: " ";
+    display: table;
+    height: 0;
+    visibility: hidden;
+    font-size: 0;
+    clear: both;
+}
+
+.tab li {
+    /* 定位属性 */
+    /* 布局属性 */
+    float: left;
+    /* 自身属性 */
+    width: 50px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    /* 文本属性 */
+    text-align: center;
+    font: normal 14px/1.5 'Microsoft yahei';
+}
+
+.tab .selected {
+    margin-bottom: -1px;
+    border-bottom: 1px solid #fff;
+}
+
+.tab-cont {
+    width: 500px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
