@@ -29,6 +29,10 @@
     margin-right: 30px;
     margin-bottom: 10px;
 }
+.unit-txt {
+    margin-left: -20px;
+    font: normal 14px/1.5 'Microsoft yahei';
+}
 
 .input .set-hd span,.prev-tit strong,.prev-cont span {
     float: left;

@@ -10,14 +10,14 @@
     }
 </style>
 <body>
-    <!--<div id="app">-->
+    <!--<div id="app" v-cloak>-->
         <!--{{ message }}-->
     <!--</div>-->
-    <div id="app" v-cloak>
-        {{ message }}
-    </div>
+    <!--<div id="app" v-cloak>-->
+        <!--{{ message }}-->
+    <!--</div>-->
     <!--<div id="app" v-html="message"></div>-->
-    <!--<div id="app" v-text="message"></div>-->
+    <div id="app" v-text="message"></div>
 
     <script src="../public/js/vue.js"></script>
     <script>
@@ -25,6 +25,7 @@
         var vueObj = new Vue({
             el: '#app',
             data: {
+//                message: 'hello world!'
                 message: 'hello world!<strong>aaaa</strong>'
             }
         });

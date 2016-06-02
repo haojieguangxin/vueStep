@@ -8,6 +8,7 @@
 <body>
     <div id="app">
         <my-component :cur="cur" :infos="infos"></my-component>
+        <my-component :cur="cur1" :infos="infos1"></my-component>
     </div>
 
     <template id="myComponent">
@@ -52,7 +53,22 @@
                         content: '内容3'
                     }
                 ],
-                cur: 0
+                cur: 0,
+                infos1: [
+                    {
+                        name: 'tab11',
+                        content: '内容1'
+                    },
+                    {
+                        name: 'tab21',
+                        content: '内容2'
+                    },
+                    {
+                        name: 'tab31',
+                        content: '内容3'
+                    }
+                ],
+                cur1: 0
             }
         });
 

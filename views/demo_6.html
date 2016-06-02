@@ -7,6 +7,9 @@
 </head>
 <body>
     <div id="app">
+        <div>
+            <input type="text" v-model="unit" style="margin-bottom: 10px">
+        </div>
         <div class="ranges clearfix">
             <div class="input">
                 <div class="set-hd clearfix">
@@ -17,6 +20,7 @@
                     <li v-for="range in ranges" class="clearfix">
                         <input type="text" class="txt" v-model="range.number">
                         <input type="text" class="txt" v-model="range.price">
+                        <span class="unit-txt">元/{{unit}}</span>
                     </li>
                 </ul>
                 <div class="add-price-btn">
@@ -46,7 +50,8 @@
             el: '#app',
             data: {
                 ranges: [{
-                }]
+                }],
+                unit: '件'
             },
             computed: {
                 rangeTxts: function() {
@@ -70,8 +75,8 @@
                             }
                         }
                         rangeTxts.push({
-                            number: number,
-                            price: '￥' + tempRange.price
+                            number: number  + this.unit,
+                            price: '￥' + tempRange.price + '/' + this.unit
                         });
                     }
                     return rangeTxts;
