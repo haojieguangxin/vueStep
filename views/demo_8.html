@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>linked</title>
+    <link rel="stylesheet" href="../public/css/demo2.css">
+</head>
+<body>
+<div id="app">
+    <ul class="tab">
+        <li v-for="info in infos">
+            <input type="checkbox" v-model="info.selected.length == info.children.length" @click="selectAll(info)">
+            <ul>
+                <li v-for="child in info.children">
+                    <input type="checkbox" v-model="info.selected" value="{{child.value}}">
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/underscore.js"></script>
+<script>
+    var vueObj = new Vue({
+        el: '#app',
+        data: {
+            infos: [
+                {
+                    name: '父目录A',
+                    children: [
+                        {name: "子目录A1", value: "11"},
+                        {name: "子目录A2", value: "12"},
+                        {name: "子目录A3", value: "13"}
+                    ],
+                    selected: []
+                },
+                {
+                    name: '父目录B',
+                    children: [
+                        {name: "子目录B1", value: "21"},
+                        {name: "子目录B2", value: "22"}
+                    ],
+                    selected: []
+                }
+            ]
+        },
+        methods: {
+            selectAll: function (info) {
+                var children = info.children;
+                if (info.selected.length == info.children.length) {
+                    info.selected = [];
+                }
+                else {
+                    for (var index in children) {
+                        var val = children[index].value;
+                        if (!_.contains(info.selected, val)) {
+                            info.selected.push(val);
+                        }
+                    }
+                }
+
+            }
+        }
+    });
+</script>
+</body>
+</html>

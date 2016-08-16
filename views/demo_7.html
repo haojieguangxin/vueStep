@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环列表</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li>{{ranges.name}}</li>
+            <li>{{ranges.age}}</li>
+        </ul>
+        <table style="border: 1px solid">
+            <tr v-for="prod in ranges.prods">
+                <td>{{prod.name}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="../public/js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                ranges: {
+                    name: "111",
+                    age: 12,
+                    prods: [{
+                        name: 'aaa'
+                    },{
+                        name: 'bbbb'
+                    },{
+                        name: 'cccc'
+                    }]
+                }
+            }
+        });
+    </script>
+</body>
+</html>
